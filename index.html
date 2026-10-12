@@ -210,7 +210,7 @@ footer{background:var(--osc);margin:0 clamp(12px,2.2vw,30px) 14px;border-radius:
 @media (max-width:1100px){.servicios{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:640px){section{padding:40px 0}.servicios{grid-template-columns:1fr}.serv .ico,.serv > img{height:150px}.portada .wrap{padding:56px 0 48px;width:calc(100% - 40px)}
   .gris > .wrap,#preguntas > .wrap{padding:36px 16px;border-radius:22px}.btn{padding:0 8px 0 20px}.botones .btn{justify-content:space-between}footer{margin-bottom:76px}}
-</style>
+body::before{content:"4,9 ★ en Google · 50 reseñas en Google · Agenda tu hora por WhatsApp";display:block;background:var(--pri);color:#fff;text-align:center;font:700 .9rem/1.3 var(--font);letter-spacing:.03em;padding:10px 14px}.serv .precio{color:var(--osc);font-weight:800;font-size:.9rem;background:var(--panel,#f4efe6);border-radius:10px;padding:8px 10px;margin:4px 0 0}</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -376,5 +376,53 @@ footer{background:var(--osc);margin:0 clamp(12px,2.2vw,30px) 14px;border-radius:
 <link rel="stylesheet" href="asistente.css">
 <script>window.ASISTENTE = {"negocio": "Santi Studio", "persona": "Santi Studio", "wa": "56974802855", "boton": "¿Quieres pedir hora?", "saludo": "Hola, soy el asistente de Santi Studio. ¿Qué servicio necesitas?", "cuando": [{"t": "Esta semana", "m": "Quiero hora esta semana."}, {"t": "La próxima semana", "m": "Quiero hora la próxima semana."}, {"t": "Fin de semana", "m": "Prefiero el fin de semana."}, {"t": "Solo quiero consultar", "m": "Por ahora solo quiero consultar."}], "servicios": [{"n": "Uñas", "info": "Manicure, pedicure y diseños.", "opts": [], "kw": "u[ñn]as|manicur|pedicur|esmalt|acr[ií]l|gel"}, {"n": "Cejas", "info": "Diseño, perfilado y laminado de cejas.", "opts": [], "kw": "cejas|laminado|microblad|micropigment"}, {"n": "Peluquería", "info": "Corte, color y alisados.", "opts": [], "kw": "peluquer|corte|color|alisado"}, {"n": "Pestañas", "info": "Lifting y extensiones de pestañas.", "opts": [], "kw": "pesta[ñn]|lifting|lash"}], "faq": [{"pri": true, "kw": "precio|valor|cuanto|costo|cobra|sale|presupuesto|cotiz", "r": "El valor depende del servicio. Cuéntame cuál te interesa y te dejo el mensaje listo para consultar."}, {"kw": "donde|direccion|ubicacion|comuna|zona|sector|llegan|van a", "r": "Estamos en Habacuc 4301, Maipú."}, {"kw": "horario|hora|abren|atienden|sabado|domingo|noche|urgencia|emergencia|24", "r": "Atendemos martes a viernes de 11:00 a 19:00 y sábado de 10:30 a 16:00."}, {"kw": "pago|transferencia|efectivo|tarjeta|boleta|factura", "r": "La forma de pago se coordina directamente por WhatsApp."}, {"kw": "garantia|seguro|confianza|quien|experiencia", "r": "Santi Studio tiene 4,9 en Google con 50 reseñas."}]};</script>
 <script src="asistente.js" defer></script>
+
+<style>
+.pop{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:18px;background:rgba(15,13,10,.62);backdrop-filter:blur(3px);opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s}
+.pop.ver{opacity:1;visibility:visible}
+.pop-caja{position:relative;width:min(430px,100%);background:#fff;border-radius:26px;overflow:hidden;text-align:center;box-shadow:0 40px 90px -30px #000;transform:translateY(40px) scale(.86) rotate(-2deg);transition:transform .6s cubic-bezier(.2,1.5,.4,1)}
+.pop.ver .pop-caja{transform:none;animation:popflota 3.6s ease-in-out .7s infinite}
+@keyframes popflota{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.pop-arriba{position:relative;background:linear-gradient(135deg,var(--osc),color-mix(in srgb,var(--pri) 60%,var(--osc)));color:#fff;padding:34px 22px 30px;overflow:hidden}
+.pop-arriba::before{content:"";position:absolute;top:0;bottom:0;left:-60%;width:45%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-18deg);animation:popbrillo 2.8s ease-in-out infinite}
+@keyframes popbrillo{0%{left:-60%}60%,100%{left:130%}}
+.pop-eti{display:inline-block;background:var(--acento);color:var(--osc);font:800 .74rem/1 var(--font);letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:999px;animation:poplate 1.5s ease-in-out infinite}
+@keyframes poplate{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
+.pop-arriba h3{font:700 1.5rem/1.15 var(--display);margin:16px 0 0;color:#fff;text-transform:none;letter-spacing:0}
+.pop-precio{display:block;font:800 clamp(2.2rem,10vw,3.2rem)/1.02 var(--display);color:var(--acento);margin-top:10px;letter-spacing:-.02em}
+.pop-antes{display:block;margin-top:8px;font-size:.95rem;opacity:.85}.pop-antes s{opacity:.8}
+.pop-abajo{padding:22px 22px 24px}
+.pop-abajo p{margin:0 0 16px;color:#4a4a55;font-size:.95rem}
+.pop-abajo .btn{width:100%;justify-content:space-between}
+.pop-nota{display:block;margin-top:12px;font-size:.76rem;color:#8a8a94}
+.pop-x{position:absolute;top:12px;right:12px;z-index:2;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.18);color:#fff;font:400 1.4rem/1 system-ui,sans-serif;cursor:pointer}
+.pop-x:hover{background:rgba(255,255,255,.34)}
+@media (prefers-reduced-motion:reduce){.pop-caja,.pop.ver .pop-caja,.pop-eti,.pop-arriba::before{animation:none;transition:none;transform:none}}
+</style>
+<div class="pop" id="pop" role="dialog" aria-modal="true" aria-labelledby="popT">
+  <div class="pop-caja">
+    <button class="pop-x" id="popX" aria-label="Cerrar">&times;</button>
+    <div class="pop-arriba">
+      <span class="pop-eti">Recomendado en Google</span>
+      <h3 id="popT">Santi Studio</h3>
+      <span class="pop-precio">4,9 ★</span>
+      
+    </div>
+    <div class="pop-abajo">
+      <p>«Es un excelente salón de belleza. Llegué muy indecisa con el color de cabello que quería y la profesional que me atendió, me explicó y ayudo demasiado en la decisión.» Existencia P., en Google.</p>
+      <a class="btn btn-wa" href="https://wa.me/56974802855?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20pedir%20una%20hora" target="_blank" rel="noopener">Agendar por WhatsApp</a>
+      <span class="pop-nota">50 reseñas en Google.</span>
+    </div>
+  </div>
+</div>
+<script>
+(function(){var p=document.getElementById('pop');if(!p)return;var visto=false;try{visto=sessionStorage.getItem('popOferta')==='1'}catch(e){}
+function cerrar(){p.classList.remove('ver');try{sessionStorage.setItem('popOferta','1')}catch(e){}}
+if(!visto)setTimeout(function(){p.classList.add('ver')},2500);
+document.getElementById('popX').addEventListener('click',cerrar);
+p.addEventListener('click',function(ev){if(ev.target===p)cerrar()});
+document.addEventListener('keydown',function(ev){if(ev.key==='Escape')cerrar()});
+p.querySelector('a').addEventListener('click',cerrar);})();
+</script>
 </body>
 </html>
